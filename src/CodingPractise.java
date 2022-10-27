@@ -6,7 +6,78 @@ import java.util.Stack;
 
 public class CodingPractise {
 
+	/*
+Given a data set with details pertaining to amount that one person owes to the other in the form of CSV.
+
+Sample Input
+Friend 1 Friend 2 Amount
+M N 20
+L M 70
+N L 40
+N K 100
+M,N,10
+N,M, 5
+
+
+
+
+
+Row 1 implies that M owes 20 Rs to N
+Row 2 implies that L owes 70 Rs to M
+Similar to other rows
+
+Given the above info design a solution to derive the below-mentioned insights:
+
+How much debt does each person owes to all users?
+How much money is a person owed?
+Who is the person with the most debt?
+Who is the person with the most money owed?
+
+	 */
+//day 6
+public void  personOws()
+{
+	//K=0 L=1 M=2 N=3
+	int[][] ows = new int[4][4];
+
+	//System.out.println(ows[0][3]);
+
+	ows[2][3]=30;  //M N 20 +10 
+	ows[1][2]=70;  //L M 70
+	ows[3][1]=40;  //N L 40
+	ows[3][0]=100; //N K 100
+	ows[3][2]=5;  //N,M, 5
+   
+
+	int[] allOws= new int[4];  
+	int[] alldebt= new int[4];
+
 	
+
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<4;j++)
+		{
+
+			   // 00+01+02+03
+			allOws[i]=allOws[i]+ows[i][j];
+			alldebt[i]=alldebt[i]+ows[j][i];
+		}
+      
+
+	}
+
+	for(int i=0;i<4;i++)
+	{
+		//System.out.println(i+" debt of "+(allOws[i]-alldebt[i]));
+		System.out.println(i+" dhar of "+allOws[i]);
+	}
+
+
+}
+
+
+
 	/**
 	 *  Day 1 19 oct 2022
 	 *  Ask Question from Kuntal
