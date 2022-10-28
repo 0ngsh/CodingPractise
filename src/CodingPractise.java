@@ -213,7 +213,7 @@ public class CodingPractise {
 	}
 
 	/**
-	 * Day 4,5 24/10/2022
+	 * Day 4,5 ,7 24/10/2022
 	 * Write a function that reverses characters in (possibly nested) parentheses in
 	 * the input string.
 	 * Input strings will always be well-formed with matching ()s.
@@ -244,7 +244,22 @@ public class CodingPractise {
 	 * Return inputString, with all the characters that were in parentheses
 	 * reversed.
 	 */
-
+	
+	String reverseInParentheses1(String s) {
+		 StringBuilder str = new StringBuilder();
+		int start = 0;
+		int end = s.length() - 1;
+		str.setLength(0);
+		
+		//recursion used to find the most nested parentheses
+		if (s.contains("(")) {
+			start = s.lastIndexOf("(");
+			end = s.indexOf(")", start);
+			str.append(s, start+1, end);
+			return reverseInParentheses1(s.substring(0, start) + str.reverse().toString() + s.substring(end+1));
+		}
+		return s;
+	}
 	public String reverseInParentheses(String inputString) {
 		System.out.println("Input String:" + inputString);
 		boolean brac_found = false;
