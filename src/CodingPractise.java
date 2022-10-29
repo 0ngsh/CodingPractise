@@ -5,6 +5,52 @@ import java.util.Map.Entry;
 
 public class CodingPractise {
 
+
+/**
+ * Day 7
+ * Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
+ * Input:
+   N = 5
+   A[] = {1,2,3,5}
+   Output:4
+   
+   Input:
+   N = 10
+   A[] = {6,1,2,8,3,4,7,10,5}
+   1,2,3,4,5,6,7,8,10
+   Output:9
+
+   N =2 
+   A[] = {1}
+   Output:2
+ * 
+ * 
+ */
+
+
+ public int findMssingElement(int arr[],int n)
+ { 
+	
+	int out=n;
+	Arrays.sort(arr);
+    for(int i=0;i<n-1;i++)
+	{
+		if(arr[i]!=(i+1))
+		{
+			out=i+1;
+			break;
+
+		}
+	   
+	}
+	return out;
+ }
+
+
+
+
+
+
 	/*
 	 * Given a data set with details pertaining to amount that one person owes to
 	 * the other in the form of CSV.
