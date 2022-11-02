@@ -8,6 +8,7 @@ public class CodingPractise {
 
 
 /**
+ * Day 8 after 4 days gap
  * Given an array of N integers, and a number sum, the task is to find the number of pairs of integers in the array whose sum is equal to sum.
 
 Examples:  
