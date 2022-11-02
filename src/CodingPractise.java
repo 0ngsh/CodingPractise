@@ -1,9 +1,76 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 import java.util.Map.Entry;
 
 public class CodingPractise {
+
+
+/**
+ * Given an array of N integers, and a number sum, the task is to find the number of pairs of integers in the array whose sum is equal to sum.
+
+Examples:  
+
+Input:  arr[] = {1, 5, 7, -1}, sum = 6
+
+Output:  2
+Explanation: Pairs with sum 6 are (1, 5) and (7, -1).
+
+Input:  arr[] = {1, 5, 7, -1, 5}, sum = 6
+Output:  3
+Explanation: Pairs with sum 6 are (1, 5), (7, -1) & (1, 5).         
+
+Input:  arr[] = {1, 1, 1, 1}, sum = 2
+Output:  6
+Explanation: Pairs with sum 2 are (1, 1), (1, 1), (1, 1), (1, 1), (1,
+1)
+, (1, 1).
+
+Input:  arr[] = {10, 12, 10, 15, -1, 7, 6, 5, 4, 2, 1, 1, 1}, sum = 11
+Output:  9
+Explanation: Pairs with sum 11 are (10, 1), (10, 1), (10, 1), (12, -1), (10, 1), (10, 1), (10, 1), (7, 4), (6, 5).
+ * 
+ */
+
+public int findPairWithSum(int arr[],int sum)
+{
+	HashMap<Integer, Integer> hm = new HashMap<>();
+ 
+        // Store counts of all elements in map hm
+		int n=arr.length;
+		int twice_count = 0;
+        for (int i = 0; i < n; i++) {
+ 
+            // initializing value to 0, if key not found
+            if (!hm.containsKey(arr[i]))
+                hm.put(arr[i], 0);
+ 
+            hm.put(arr[i], hm.get(arr[i]) + 1);
+        }
+        
+ 
+        
+        for (int i = 0; i < n; i++) {
+            if (hm.get(sum - arr[i]) != null)
+                twice_count += hm.get(sum - arr[i]);
+ 
+            // if (arr[i], arr[i]) pair satisfies the
+            // condition, then we need to ensure that the
+            // count is decreased by one such that the
+            // (arr[i], arr[i]) pair is not considered
+            if (sum - arr[i] == arr[i])
+                twice_count--;
+        }
+ 
+        // return the half of twice_count
+        return twice_count / 2;
+}
+
+
+
+
+
 
 
 /**
