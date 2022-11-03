@@ -1,11 +1,51 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Stack;
 import java.util.Map.Entry;
 
 public class CodingPractise {
 
+
+/**
+ * Day 9
+ * 
+ Given a string without spaces, the task is to remove duplicates from it.
+
+Note: The original order of characters must be kept the same. 
+
+Example 1:
+
+Input: S = "zvvo"
+Output: "zvo"
+Explanation: Only keep the first
+occurrence
+Example 2:
+
+Input: S = "gfg"
+Output: gf
+Explanation: Only keep the first
+occurrence
+ * 
+ * 
+ *
+ */
+
+
+ public String removeDuplicate(String s)
+ {
+	String o="";
+	LinkedHashSet<Character> hm = new LinkedHashSet<Character>();
+	for (int i=0;i<s.length();i++)
+	{
+           if(hm.add(s.charAt(i)))
+		   {
+			o+=s.charAt(i);
+		   }
+	}
+	return o;
+ }
 
 /**
  * Day 8 after 4 days gap
@@ -54,7 +94,11 @@ public int findPairWithSum(int arr[],int sum)
         
         for (int i = 0; i < n; i++) {
             if (hm.get(sum - arr[i]) != null)
-                twice_count += hm.get(sum - arr[i]);
+				{
+					twice_count += hm.get(sum - arr[i]);
+					System.out.println( arr[i]+" , "+(sum - arr[i]));
+				}
+                
  
             // if (arr[i], arr[i]) pair satisfies the
             // condition, then we need to ensure that the
