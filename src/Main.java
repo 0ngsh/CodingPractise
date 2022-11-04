@@ -6,8 +6,8 @@ public class Main {
 		CodingPractise codePractise=new CodingPractise();
 		//codePractise.personOws();
 		//System.out.println(codePractise.reverseInParentheses1("foo(bar(baz))blim"));
-		int arr[]={10, 12, 10, 15, -1, 7, 6, 5, 4, 2, 1, 1, 1};
-		System.out.println(codePractise.removeDuplicate("zvvo"));
+		int arr[]={16, 17, 4, 3, 5, 2};
+	codePractise.checkLeader(arr);
       //  int arr[]={1,2};
 		//System.out.println(codePractise.findMssingElement(arr, 3));
 		//int arr1[]={1,10,13};

@@ -9,6 +9,35 @@ public class CodingPractise {
 
 
 /**
+ *  Day 10
+ * 
+ * Write a program to print all the LEADERS in the array. 
+ * An element is leader if it is greater than all the elements to its right side. 
+ * And the rightmost element is always a leader. 
+ * For example in the array {16, 17, 4, 3, 5, 2}, leaders are 17, 5 and 2.
+ * 
+ * 
+ * 
+ */
+
+
+ public void checkLeader(int arr[])
+ {
+	
+ int leader=0;
+	for(int i =arr.length-1; i>=0;i--)
+	{
+       
+	   if(leader<=arr[i])
+	   {
+		leader=arr[i];
+		System.out.println(leader);
+	   }
+	}
+
+ }
+
+/**
  * Day 9
  * 
  Given a string without spaces, the task is to remove duplicates from it.
