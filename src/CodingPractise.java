@@ -1,196 +1,241 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.Map.Entry;
 
 public class CodingPractise {
 
+	/*
+	 * Day 11
+	 * Given an array of strings strs, group the anagrams together. You can return
+	 * the answer in any order.
+	 * 
+	 * An Anagram is a word or phrase formed by rearranging the letters of a
+	 * different word or phrase, typically using all the original letters exactly
+	 * once.
+	 * 
+	 * 
+	 * 
+	 * Example 1:
+	 * 
+	 * Input: strs = ["eat","tea","tan","ate","nat","bat"]
+	 * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+	 * 
+	 * Example 2:
+	 * 
+	 * Input: strs = [""]
+	 * Output: [[""]]
+	 * 
+	 * Example 3:
+	 * 
+	 * Input: strs = ["a"]
+	 * Output: [["a"]]
+	 * 
+	 * 
+	 * 
+	 * Constraints:
+	 * 
+	 * 1 <= strs.length <= 104
+	 * 0 <= strs[i].length <= 100
+	 * strs[i] consists of lowercase English letters.
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
-/**
- *  Day 10
- * 
- * Write a program to print all the LEADERS in the array. 
- * An element is leader if it is greater than all the elements to its right side. 
- * And the rightmost element is always a leader. 
- * For example in the array {16, 17, 4, 3, 5, 2}, leaders are 17, 5 and 2.
- * 
- * 
- * 
- */
-
-
- public void checkLeader(int arr[])
- {
-	
- int leader=0;
-	for(int i =arr.length-1; i>=0;i--)
-	{
-       
-	   if(leader<=arr[i])
-	   {
-		leader=arr[i];
-		System.out.println(leader);
-	   }
-	}
-
- }
-
-/**
- * Day 9
- * 
- Given a string without spaces, the task is to remove duplicates from it.
-
-Note: The original order of characters must be kept the same. 
-
-Example 1:
-
-Input: S = "zvvo"
-Output: "zvo"
-Explanation: Only keep the first
-occurrence
-Example 2:
-
-Input: S = "gfg"
-Output: gf
-Explanation: Only keep the first
-occurrence
- * 
- * 
- *
- */
-
-
- public String removeDuplicate(String s)
- {
-	String o="";
-	LinkedHashSet<Character> hm = new LinkedHashSet<Character>();
-	for (int i=0;i<s.length();i++)
-	{
-           if(hm.add(s.charAt(i)))
-		   {
-			o+=s.charAt(i);
-		   }
-	}
-	return o;
- }
-
-/**
- * Day 8 after 4 days gap
- * Given an array of N integers, and a number sum, the task is to find the number of pairs of integers in the array whose sum is equal to sum.
-
-Examples:  
-
-Input:  arr[] = {1, 5, 7, -1}, sum = 6
-
-Output:  2
-Explanation: Pairs with sum 6 are (1, 5) and (7, -1).
-
-Input:  arr[] = {1, 5, 7, -1, 5}, sum = 6
-Output:  3
-Explanation: Pairs with sum 6 are (1, 5), (7, -1) & (1, 5).         
-
-Input:  arr[] = {1, 1, 1, 1}, sum = 2
-Output:  6
-Explanation: Pairs with sum 2 are (1, 1), (1, 1), (1, 1), (1, 1), (1,
-1)
-, (1, 1).
-
-Input:  arr[] = {10, 12, 10, 15, -1, 7, 6, 5, 4, 2, 1, 1, 1}, sum = 11
-Output:  9
-Explanation: Pairs with sum 11 are (10, 1), (10, 1), (10, 1), (12, -1), (10, 1), (10, 1), (10, 1), (7, 4), (6, 5).
- * 
- */
-
-public int findPairWithSum(int arr[],int sum)
-{
-	HashMap<Integer, Integer> hm = new HashMap<>();
- 
-        // Store counts of all elements in map hm
-		int n=arr.length;
-		int twice_count = 0;
-        for (int i = 0; i < n; i++) {
- 
-            // initializing value to 0, if key not found
-            if (!hm.containsKey(arr[i]))
-                hm.put(arr[i], 0);
- 
-            hm.put(arr[i], hm.get(arr[i]) + 1);
-        }
-        
- 
-        
-        for (int i = 0; i < n; i++) {
-            if (hm.get(sum - arr[i]) != null)
-				{
-					twice_count += hm.get(sum - arr[i]);
-					System.out.println( arr[i]+" , "+(sum - arr[i]));
+	public List<List<String>> GroupAnagram(String[] strs) {
+		List<List<String>> out = new ArrayList<>();
+		List<String> ignoreWord = new ArrayList<>();
+		for (int i = 0; i < strs.length; i++) {
+			if (ignoreWord.contains(strs[i])) {
+				continue;
+			}
+			List<String> o1 = new ArrayList<>();
+			o1.add(strs[i]);
+			char[] temp = strs[i].toCharArray();
+			Arrays.sort(temp);
+			String string = new String(temp);
+			for (int j = i + 1; j < strs.length; j++) {
+				char[] temp1 = strs[j].toCharArray();
+				Arrays.sort(temp1);
+				String string1 = new String(temp1);
+				if (string.equals(string1)) {
+					o1.add(strs[j]);
+					ignoreWord.add(strs[j]);
 				}
-                
- 
-            // if (arr[i], arr[i]) pair satisfies the
-            // condition, then we need to ensure that the
-            // count is decreased by one such that the
-            // (arr[i], arr[i]) pair is not considered
-            if (sum - arr[i] == arr[i])
-                twice_count--;
-        }
- 
-        // return the half of twice_count
-        return twice_count / 2;
-}
+			}
+			out.add(o1);
+		}
+		return out;
+	}
 
+	/**
+	 * Day 10
+	 * 
+	 * Write a program to print all the LEADERS in the array.
+	 * An element is leader if it is greater than all the elements to its right
+	 * side.
+	 * And the rightmost element is always a leader.
+	 * For example in the array {16, 17, 4, 3, 5, 2}, leaders are 17, 5 and 2.
+	 * 
+	 * 
+	 * 
+	 */
 
+	public void checkLeader(int arr[]) {
 
+		int leader = 0;
+		for (int i = arr.length - 1; i >= 0; i--) {
 
+			if (leader <= arr[i]) {
+				leader = arr[i];
+				System.out.println(leader);
+			}
+		}
 
+	}
 
+	/**
+	 * Day 9
+	 * 
+	 * Given a string without spaces, the task is to remove duplicates from it.
+	 * 
+	 * Note: The original order of characters must be kept the same.
+	 * 
+	 * Example 1:
+	 * 
+	 * Input: S = "zvvo"
+	 * Output: "zvo"
+	 * Explanation: Only keep the first
+	 * occurrence
+	 * Example 2:
+	 * 
+	 * Input: S = "gfg"
+	 * Output: gf
+	 * Explanation: Only keep the first
+	 * occurrence
+	 * 
+	 * 
+	 *
+	 */
 
-/**
- * Day 7
- * Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
- * Input:
-   N = 5
-   A[] = {1,2,3,5}
-   Output:4
-   
-   Input:
-   N = 10
-   A[] = {6,1,2,8,3,4,7,10,5}
-   1,2,3,4,5,6,7,8,10
-   Output:9
+	public String removeDuplicate(String s) {
+		String o = "";
+		LinkedHashSet<Character> hm = new LinkedHashSet<Character>();
+		for (int i = 0; i < s.length(); i++) {
+			if (hm.add(s.charAt(i))) {
+				o += s.charAt(i);
+			}
+		}
+		return o;
+	}
 
-   N =2 
-   A[] = {1}
-   Output:2
- * 
- * 
- */
+	/**
+	 * Day 8 after 4 days gap
+	 * Given an array of N integers, and a number sum, the task is to find the
+	 * number of pairs of integers in the array whose sum is equal to sum.
+	 * 
+	 * Examples:
+	 * 
+	 * Input: arr[] = {1, 5, 7, -1}, sum = 6
+	 * 
+	 * Output: 2
+	 * Explanation: Pairs with sum 6 are (1, 5) and (7, -1).
+	 * 
+	 * Input: arr[] = {1, 5, 7, -1, 5}, sum = 6
+	 * Output: 3
+	 * Explanation: Pairs with sum 6 are (1, 5), (7, -1) & (1, 5).
+	 * 
+	 * Input: arr[] = {1, 1, 1, 1}, sum = 2
+	 * Output: 6
+	 * Explanation: Pairs with sum 2 are (1, 1), (1, 1), (1, 1), (1, 1), (1,
+	 * 1)
+	 * , (1, 1).
+	 * 
+	 * Input: arr[] = {10, 12, 10, 15, -1, 7, 6, 5, 4, 2, 1, 1, 1}, sum = 11
+	 * Output: 9
+	 * Explanation: Pairs with sum 11 are (10, 1), (10, 1), (10, 1), (12, -1), (10,
+	 * 1), (10, 1), (10, 1), (7, 4), (6, 5).
+	 * 
+	 */
 
+	public int findPairWithSum(int arr[], int sum) {
+		HashMap<Integer, Integer> hm = new HashMap<>();
 
- public int findMssingElement(int arr[],int n)
- { 
-	
-	int out=n;
-	Arrays.sort(arr);
-    for(int i=0;i<n-1;i++)
-	{
-		if(arr[i]!=(i+1))
-		{
-			out=i+1;
-			break;
+		// Store counts of all elements in map hm
+		int n = arr.length;
+		int twice_count = 0;
+		for (int i = 0; i < n; i++) {
+
+			// initializing value to 0, if key not found
+			if (!hm.containsKey(arr[i]))
+				hm.put(arr[i], 0);
+
+			hm.put(arr[i], hm.get(arr[i]) + 1);
+		}
+
+		for (int i = 0; i < n; i++) {
+			if (hm.get(sum - arr[i]) != null) {
+				twice_count += hm.get(sum - arr[i]);
+				System.out.println(arr[i] + " , " + (sum - arr[i]));
+			}
+
+			// if (arr[i], arr[i]) pair satisfies the
+			// condition, then we need to ensure that the
+			// count is decreased by one such that the
+			// (arr[i], arr[i]) pair is not considered
+			if (sum - arr[i] == arr[i])
+				twice_count--;
+		}
+
+		// return the half of twice_count
+		return twice_count / 2;
+	}
+
+	/**
+	 * Day 7
+	 * Given an array of size N-1 such that it only contains distinct integers in
+	 * the range of 1 to N. Find the missing element.
+	 * Input:
+	 * N = 5
+	 * A[] = {1,2,3,5}
+	 * Output:4
+	 * 
+	 * Input:
+	 * N = 10
+	 * A[] = {6,1,2,8,3,4,7,10,5}
+	 * 1,2,3,4,5,6,7,8,10
+	 * Output:9
+	 * 
+	 * N =2
+	 * A[] = {1}
+	 * Output:2
+	 * 
+	 * 
+	 */
+
+	public int findMssingElement(int arr[], int n) {
+
+		int out = n;
+		Arrays.sort(arr);
+		for (int i = 0; i < n - 1; i++) {
+			if (arr[i] != (i + 1)) {
+				out = i + 1;
+				break;
+
+			}
 
 		}
-	   
+		return out;
 	}
-	return out;
- }
-
-
-
-
-
 
 	/*
 	 * Given a data set with details pertaining to amount that one person owes to
@@ -249,8 +294,6 @@ public int findPairWithSum(int arr[],int sum)
 
 		}
 		// Ending of inserting data into 2D array
-
-
 
 		int[] allOws = new int[4];
 		int[] allDebt = new int[4];
@@ -431,22 +474,23 @@ public int findPairWithSum(int arr[],int sum)
 	 * Return inputString, with all the characters that were in parentheses
 	 * reversed.
 	 */
-	
+
 	String reverseInParentheses1(String s) {
-		 StringBuilder str = new StringBuilder();
+		StringBuilder str = new StringBuilder();
 		int start = 0;
 		int end = s.length() - 1;
 		str.setLength(0);
-		
-		//recursion used to find the most nested parentheses
+
+		// recursion used to find the most nested parentheses
 		if (s.contains("(")) {
 			start = s.lastIndexOf("(");
 			end = s.indexOf(")", start);
-			str.append(s, start+1, end);
-			return reverseInParentheses1(s.substring(0, start) + str.reverse().toString() + s.substring(end+1));
+			str.append(s, start + 1, end);
+			return reverseInParentheses1(s.substring(0, start) + str.reverse().toString() + s.substring(end + 1));
 		}
 		return s;
 	}
+
 	public String reverseInParentheses(String inputString) {
 		System.out.println("Input String:" + inputString);
 		boolean brac_found = false;
