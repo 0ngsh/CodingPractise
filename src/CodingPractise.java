@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,67 @@ import java.util.Stack;
 import java.util.Map.Entry;
 
 public class CodingPractise {
+
+
+	/*
+	 * Given a string S, find length of the longest substring with all distinct characters. 
+
+	Example 1:
+
+	Input:
+	S = "geeksforgeeks"
+	Output: 7
+	Explanation: "eksforg" is the longest 
+	substring with all distinct characters.
+
+	 * 
+	 * 
+	 */
+
+	public int longestSubstrDistinctChars(String S){
+		HashSet<Character> set=new HashSet(); 
+		int start=0;
+		int end=0;
+		for(int i=0;i<S.length();i++)
+		{
+			//geeksforgeeks
+			
+			if(!set.add(S.charAt(i)))
+			{
+				start=i;
+				
+				System.out.println("I am here: "+ i );
+			}
+			else
+			{
+				end=i;
+			}
+			
+				
+			
+		}
+		System.out.println("Start: "+start+" End: "+end);
+		return end-start;
+
+	}
+
+
+/*
+ * 
+ * 
+ * Splitter
+ * 
+ */
+
+   public void splitter(String input,String spliter)
+   {
+	final List<String> items = Arrays.asList(input.split(spliter));
+	for (final String item : items) {
+		System.out.println(item);
+	}
+   }
+
+
 
 	/*
 	 * Day 11

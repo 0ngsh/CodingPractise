@@ -15,7 +15,7 @@ public class Main {
 		//int arr2[]={10,1,13};
 		//System.out.println(new AreSimilar().solution(arr1, arr2));
 
-		String[] inp={"eat","tea","tan","ate","nat","bat"};
+		/*String[] inp={"eat","tea","tan","ate","nat","bat"};
 
     List<List<String>> sol=codePractise.GroupAnagram(inp);
    
@@ -27,7 +27,10 @@ public class Main {
            System.out.println(sol.get(i).get(j));
           
         }
-    }
+    }*/
+
+	//codePractise.splitter("প্ৰকল্পৰ সবিশেষ | প্ৰকাশকৰ একাষাৰ | কৰ্মদল | সহায়", "\\s*\\|\\s*");
+	System.out.println(codePractise.longestSubstrDistinctChars("geeksforgeeks"));
 		
 	}
 	
