@@ -7,7 +7,7 @@ public class ThreadABC {
     static class Thread1 extends Thread{
 
         ResourceLock lock;
-
+        
         Thread1(ResourceLock lock){
             this.lock = lock;
         }

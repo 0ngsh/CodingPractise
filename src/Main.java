@@ -30,8 +30,12 @@ public class Main {
     }*/
 
 	//codePractise.splitter("প্ৰকল্পৰ সবিশেষ | প্ৰকাশকৰ একাষাৰ | কৰ্মদল | সহায়", "\\s*\\|\\s*");
-	System.out.println(codePractise.longestSubstrDistinctChars("geeksforgeeks"));
-		
+	//System.out.println(codePractise.longestSubstrDistinctChars("geeksforgeeks"));
+  int[] inp2={1, 9, 3, 10, 4, 20, 2};
+codePractise.findLengthOfLongestConsecutiveSubsequence(inp2);
+
+	
+
 	}
 	
 	

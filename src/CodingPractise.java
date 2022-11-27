@@ -1,14 +1,88 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CodingPractise {
+
+/**
+ * Given an array of integers, find the length of the longest sub-sequence 
+ * such that elements in the subsequence are consecutive integers,
+ *  the consecutive numbers can be in any order. 
+
+Examples:  
+
+    Input: arr[] = {1, 9, 3, 10, 4, 20, 2}
+    Output: 4
+    Explanation: The subsequence 1, 3, 4, 2 is the longest subsequence of consecutive elements
+
+    Input: arr[] = {36, 41, 56, 35, 44, 33, 34, 92, 43, 32, 42}
+    Output: 5
+    Explanation: The subsequence 36, 35, 33, 34, 32 is the longest subsequence of consecutive elements.
+ * 
+ * 
+ * 
+ * @param arr
+ * @return
+ */
+
+	public void findLengthOfLongestConsecutiveSubsequence(int[] arr)
+	{
+		Arrays.sort(arr);
+	
+    //  Arrays.stream(arr).sorted().filter(i->arr[i]-arr[i-1]==-1).mapToObj(i -> arr[i]).forEach(System.out::println);
+    IntStream.range(1, arr.length).filter(i->arr[i]-arr[i-1]==1).forEach(System.out::println);
+
+	
+	}
+
+/**
+ * 
+ * Given a list of non negative integers, arrange them in such a manner that they form the largest number possible.
+ * The result is going to be very large, hence return the result in the form of a string.
+ * 
+ * Input: 
+N = 5
+Arr[] = {3, 30, 34, 5, 9}
+Output: 9534330
+Explanation: Given numbers are {3, 30, 34,
+5, 9}, the arrangement 9534330 gives the
+largest value.
+ * @param inp
+ */
+
+	public void largestNumberFormedFromArray(String[]  inp)
+	{
+
+		List al = Arrays.asList(inp);
+		//{3, 30, 34, 5, 9}
+	    Collections.sort(al, new Comparator<String>() {
+		@Override
+		public int compare(String X, String Y) {
+			String XY=X+Y;
+			String YX=Y+X;	
+			return XY.compareTo(YX)>0?-1:1;
+		}
+	  });
+
+	  Iterator it=al.iterator();
+	  while(it.hasNext())
+	  {
+		System.out.println(it.next());
+	  }
+
+	}
 
 
 	/*
@@ -26,32 +100,39 @@ public class CodingPractise {
 	 * 
 	 */
 
-	public int longestSubstrDistinctChars(String S){
-		HashSet<Character> set=new HashSet(); 
-		int start=0;
-		int end=0;
-		for(int i=0;i<S.length();i++)
-		{
-			//geeksforgeeks
-			
-			if(!set.add(S.charAt(i)))
-			{
-				start=i;
-				
-				System.out.println("I am here: "+ i );
-			}
-			else
-			{
-				end=i;
-			}
-			
-				
-			
-		}
-		System.out.println("Start: "+start+" End: "+end);
-		return end-start;
+	public int longestSubstrDistinctChars(String str){
+		String test = "";
+        // Result
+        int maxLength = -1;
+        // Return zero if string is empty
+        if (str.isEmpty()) {
+            return 0;
+        }
+        // Return one if string length is one
+        else if (str.length() == 1) {
+            return 1;
+        }
+        for (char c : str.toCharArray()) {
+            String current = String.valueOf(c);
 
-	}
+            System.out.println("current "+current);
+
+            // If string already contains the character
+            // Then substring after repeating character
+            if (test.contains(current)) {
+                test = test.substring(test.indexOf(current)
+                        + 1);
+                System.out.println("nonrepeat substring "+test);
+            }
+            test = test + String.valueOf(c);
+            System.out.println("nonrepeat test "+test + " test length "+ test.length());
+            maxLength = Math.max(test.length(), maxLength);
+            System.out.println("maxlength "+maxLength);
+        }
+
+        return maxLength;
+    }
+	
 
 
 /*
