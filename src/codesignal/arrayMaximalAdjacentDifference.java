@@ -24,7 +24,7 @@ Input/Output
  */
 
 
-
+package codesignal;
 public class arrayMaximalAdjacentDifference {
 
     int solution(int[] inputArray) {

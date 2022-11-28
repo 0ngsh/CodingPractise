@@ -1,3 +1,4 @@
+package codesignal;
 public class AreEquallyStrong
 {
     boolean solution(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {

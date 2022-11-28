@@ -23,7 +23,7 @@ Example
  * 
  * 
  */
-
+package codesignal;
 public class isIPv4Address
 {
     boolean solution(String inputString) {

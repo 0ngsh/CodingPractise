@@ -27,7 +27,7 @@ Input/Output
  * 
  * 
  */
-
+package codesignal;
 
 public class ArrayChange {
     int solution(int[] inputArray) {

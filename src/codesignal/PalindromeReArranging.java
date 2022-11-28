@@ -26,7 +26,7 @@ Input/Output
     true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.
 
  */
-
+package codesignal;
  public class PalindromeReArranging
  {
 
