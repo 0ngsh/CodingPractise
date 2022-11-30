@@ -41,7 +41,6 @@ public class LinkedList {
        {
         System.out.println(currnetNode.data);
         currnetNode=currnetNode.next;
-       
        }
        System.out.println(currnetNode.data);
  }
