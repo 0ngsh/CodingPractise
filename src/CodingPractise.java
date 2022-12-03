@@ -16,6 +16,52 @@ import java.util.stream.IntStream;
 
 public class CodingPractise {
 
+
+
+/**
+ * /Input:
+    //"Chennai" -> "Bangalore"
+    //"Bombay" -> "Delhi"
+    //"Goa"    -> "Chennai"
+    //"Delhi"  -> "Goa"
+    //
+    //Output:
+    //Bombay->Delhi, Delhi->Goa, Goa->Chennai, Chennai->Bangalore
+ * 
+ * 
+ * @param arr
+ */
+
+public void getPathfromSourceDestinatin()
+{
+	HashMap<String, String> cities=new HashMap<String,String>();
+  cities.put("Chennai","Bangalore");
+  cities.put("Bombay","Delhi");
+  cities.put("Goa","Chennai");
+  cities.put("Delhi","Goa");
+
+  cities.forEach((key, value) -> {
+	String tempKey=cities.get(key);
+	System.out.println("For "+ tempKey);
+	while(tempKey!=null)
+	{
+		System.out.print(cities.get(tempKey)+"-->");
+		tempKey=cities.get(tempKey);
+
+	}
+	System.out.println();
+
+
+  } );
+  
+
+
+
+
+
+}
+
+
 /**
  * Given an array of integers, find the length of the longest sub-sequence 
  * such that elements in the subsequence are consecutive integers,
