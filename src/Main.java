@@ -1,4 +1,7 @@
+import java.security.KeyStore.Entry;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Main {
@@ -35,7 +38,23 @@ public class Main {
   //int[] inp2={1, 9, 3, 10, 4, 20, 2};
 //codePractise.findLengthOfLongestConsecutiveSubsequence(inp2);
 
-	codePractise.getPathfromSourceDestinatin();
+	//codePractise.getPathfromSourceDestinatin();
+
+
+	HashMap<String,Integer> hm =new HashMap<String,Integer>();
+  
+	hm.put("Math", 98);
+	hm.put("Data Structure", 85);
+	hm.put("Database", 91);
+     hm.put("Java", 95);
+	hm.put("Operating System", 79);
+     hm.put("Networking", 80);
+
+	 HashMap<String,Integer> hm1=codePractise.sortByValue(hm);
+
+	 for (Map.Entry<String,Integer> entry:hm1.entrySet()) {
+		System.out.println("Key: " +entry.getKey()+", Value: "+entry.getValue());
+	 }
 
 	}
 	

@@ -14,9 +14,31 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import DataStructure.LinkedList;
+
 public class CodingPractise {
 
+/**
+ * 
+ * Hash map sort by value
+ * 
+ * @param inp
+ * @return 
+ */
 
+public HashMap<String, Integer> sortByValue(HashMap<String,Integer> inp)
+
+{
+List<Map.Entry<String,Integer> > list= new java.util.LinkedList< Map.Entry<String,Integer> >(inp.entrySet());
+Collections.sort(list,(i1,i2)->i1.getValue().compareTo(i2.getValue()));
+HashMap<String,Integer> temp=new HashMap<String, Integer>();
+for (Entry<String,Integer> entry : list) {
+	temp.put(entry.getKey(), entry.getValue());
+
+}
+return temp;
+
+}
 
 /**
  * /Input:
