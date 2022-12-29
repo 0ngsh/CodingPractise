@@ -11,7 +11,7 @@ public class Main {
 		CodingPractise codePractise=new CodingPractise();
 		//codePractise.personOws();
 		//System.out.println(codePractise.reverseInParentheses1("foo(bar(baz))blim"));
-		int arr[]={16, 17, 4, 3, 5, 2};
+		//int arr[]={16, 17, 4, 3, 5, 2};
 	//codePractise.checkLeader(arr);
       //  int arr[]={1,2};
 		//System.out.println(codePractise.findMssingElement(arr, 3));
@@ -41,20 +41,26 @@ public class Main {
 	//codePractise.getPathfromSourceDestinatin();
 
 
-	HashMap<String,Integer> hm =new HashMap<String,Integer>();
+	// HashMap<String,Integer> hm =new HashMap<String,Integer>();
   
-	hm.put("Math", 98);
-	hm.put("Data Structure", 85);
-	hm.put("Database", 91);
-     hm.put("Java", 95);
-	hm.put("Operating System", 79);
-     hm.put("Networking", 80);
+	// hm.put("Math", 98);
+	// hm.put("Data Structure", 85);
+	// hm.put("Database", 91);
+    //  hm.put("Java", 95);
+	// hm.put("Operating System", 79);
+    //  hm.put("Networking", 80);
 
-	 HashMap<String,Integer> hm1=codePractise.sortByValue(hm);
+	//  HashMap<String,Integer> hm1=codePractise.sortByValue(hm);
 
-	 for (Map.Entry<String,Integer> entry:hm1.entrySet()) {
-		System.out.println("Key: " +entry.getKey()+", Value: "+entry.getValue());
-	 }
+	//  for (Map.Entry<String,Integer> entry:hm1.entrySet()) {
+	// 	System.out.println("Key: " +entry.getKey()+", Value: "+entry.getValue());
+	//  }
+
+
+
+
+	int[] arr={2, 4, 1, 3, 5};
+codePractise.inversionCount(arr, arr.length);
 
 	}
 	

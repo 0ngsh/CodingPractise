@@ -19,6 +19,68 @@ import DataStructure.LinkedList;
 public class CodingPractise {
 
 /**
+ * Given an array of integers. Find the Inversion Count in the array. 
+
+Inversion Count: For an array, inversion count indicates how far (or close) the array is from being sorted. If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum. 
+Formally, two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j.
+ * 
+ * 
+ * @param arr
+ * @param n
+ */
+
+
+public long inversionCount(int arr[], long n)
+ {
+	long inversionCount=0;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=i+1;j<n;j++)
+		{
+			if(arr[i]>arr[j])
+			{
+				System.out.println(arr[i]+","+arr[j]);
+				inversionCount++;
+			}
+		}
+	}
+	
+	return inversionCount;
+ }
+
+
+
+
+/**
+ * 
+ * Given a sorted array of positive integers. Your task is to rearrange the array elements alternatively i.e first element should be max value, second should be min value, third should be second max, fourth should be second min and so on.
+Note: Modify the original array itself. Do it without using any extra space. You do not have to return anything.
+ * 
+ * @param arr
+ * @param n
+ */
+
+
+	public static void rearrange(int arr[], int n){
+
+		int temp[] = arr.clone();
+		int min_index = 0, max_index = n - 1;
+	
+		boolean flag = true;
+	
+		//if true assign max element , if false assign min element
+		for (int i = 0; i < n; i++) {
+			if (flag)
+				arr[i] = temp[max_index--];
+			else
+				arr[i] = temp[min_index++];
+	
+			flag = !flag; //1st change it to false , then true...so on...
+		}
+	
+		}
+
+/**
  * 
  * Hash map sort by value
  * 
