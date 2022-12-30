@@ -59,8 +59,10 @@ public class Main {
 
 
 
-	int[] arr={2, 4, 1, 3, 5};
-codePractise.inversionCount(arr, arr.length);
+	//int[] arr={2, 4, 1, 3, 5};
+//codePractise.inversionCount(arr, arr.length);
+String ars = "[{{[()]}]";
+System.out.println(codePractise.areBracketBalanced(ars));
 
 	}
 	

@@ -18,6 +18,68 @@ import DataStructure.LinkedList;
 
 public class CodingPractise {
 
+
+/**
+ * 
+ * Given an expression string exp, write a program to examine whether the pairs and the orders of “{“, “}”, “(“, “)”, “[“, “]” are correct in the given expression.
+
+Example: 
+
+    Input: exp = “[()]{}{[()()]()}” 
+    Output: Balanced
+    Explanation: all the brackets are well-formed
+
+    Input: exp = “[(])” 
+    Output: Not Balanced 
+    Explanation: 1 and 4 brackets are not balanced because 
+    there is a closing ‘]’ before the closing ‘(‘
+ * 
+ * @param inp
+ * @return
+ */
+
+
+public boolean areBracketBalanced(String inp)
+{
+	Stack<Character> s1=new Stack<Character>();
+     for(int i=0;i<inp.length();i++)
+	 {
+		if(inp.charAt(i)=='[' || inp.charAt(i)=='{' || inp.charAt(i)=='(') 
+		{
+			s1.push(inp.charAt(i));
+
+		}
+      else if(inp.charAt(i)==']')
+	  {
+		if(s1.isEmpty() || s1.pop()!='[')
+		{
+			return false;
+		}
+
+	  }
+	  else if(inp.charAt(i)=='}')
+	  {
+		if(s1.isEmpty() || s1.pop()!='{')
+		{
+			return false;
+		}
+
+	  }
+
+	  else if(inp.charAt(i)==')')
+	  {
+		if(s1.isEmpty() || s1.pop()!='(')
+		{
+			return false;
+		}
+
+	  }
+
+
+	 }
+	return s1.isEmpty();
+}
+
 /**
  * Given an array of integers. Find the Inversion Count in the array. 
 
