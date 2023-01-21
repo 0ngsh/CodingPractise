@@ -61,8 +61,17 @@ public class Main {
 
 	//int[] arr={2, 4, 1, 3, 5};
 //codePractise.inversionCount(arr, arr.length);
-String ars = "[{{[()]}]";
-System.out.println(codePractise.areBracketBalanced(ars));
+// String ars = "[{{[()]}]";
+// System.out.println(codePractise.areBracketBalanced(ars));
+
+
+// long[] arr={6, 8, 0, 1, 3};
+// long[] out=codePractise.nextGreaterElement(arr, 5);
+// for(long item:out)
+// {
+//   System.out.println(item);
+// }
+  codePractise.permute("ABC","");
 
 	}
 	

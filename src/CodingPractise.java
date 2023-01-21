@@ -17,6 +17,180 @@ import java.util.stream.IntStream;
 import DataStructure.LinkedList;
 
 public class CodingPractise {
+/**
+ * 
+Permutations of a given string
+Given a string S. The task is to print all unique permutations of the given string in lexicographically sorted order.
+
+ */
+
+ void permute(String s, String answer)
+
+{
+
+if (s.length() == 0) {
+
+System.out.print(answer + " ");
+
+return;
+
+}
+
+for (int i = 0; i < s.length(); i++) {
+char ch = s.charAt(i);
+String left_substr = s.substring(0, i);
+String right_substr = s.substring(i + 1);
+String rest = left_substr + right_substr;
+System.out.println("rest="+rest+" Answer="+(answer+ch));
+permute(rest, answer + ch);
+
+
+}
+}
+public void permute1(String str, int start, int end)
+	{
+		if (start == end)
+			System.out.println(str);
+		else {
+			for (int i = start; i <= end; i++) {
+				str = swap(str, start, i);
+				permute(str, start + 1, end);
+				str = swap(str, start, i);
+			}
+		}
+	}
+
+	public String swap(String a, int i, int j)
+	{
+		char temp;
+		char[] charArray = a.toCharArray();
+		temp = charArray[i];
+		charArray[i] = charArray[j];
+		charArray[j] = temp;
+		return String.valueOf(charArray);
+	}
+
+	/**
+	 * 
+	 * 
+	 * Given a matrix of size r*c. Traverse the matrix in spiral form.
+
+Example 1:
+
+Input:
+r = 4, c = 4
+matrix[][] = {{1, 2, 3, 4},
+           {5, 6, 7, 8},
+           {9, 10, 11, 12},
+           {13, 14, 15,16}}
+Output: 
+1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+Explanation:
+
+Example 2:
+
+Input:
+r = 3, c = 4  
+matrix[][] = {{1, 2, 3, 4},
+           {5, 6, 7, 8},
+           {9, 10, 11, 12}}
+Output: 
+1 2 3 4 8 12 11 10 9 5 6 7
+Explanation:
+Applying same technique as shown above, 
+output for the 2nd testcase will be 
+1 2 3 4 8 12 11 10 9 5 6 7.
+
+	 * 
+	 * 
+	 * 
+	 * @param inp
+	 * @param n
+	 * @return
+	 */
+
+	public  ArrayList<Integer> spirallyTraverse(int matrix[][], int r, int c)
+	 {
+		 ArrayList arrayList=new ArrayList<String>();
+
+
+		 return arrayList;
+	 }
+
+
+
+/**
+ * 
+ * # **Next Greater Element**
+
+Given an array **arr[ ]** of size **N** having elements, the task is to find the next greater element for each element of the array in order of their appearance in the array.Next greater element of an element in the array is the nearest element on the right which is greater than the current element.If there does not exist next greater of current element, then next greater element for current element is -1. For example, next greater of the last element is always -1.
+example 1
+Input:
+N = 4, arr[] = [1 3 2 4]
+Output:
+3 4 4 -1
+Explanation:
+In the array, the next larger element
+to 1 is 3 , 3 is 4 , 2 is 4 and for 4 ?
+since it doesn't exist, it is -1.
+example 2
+Input:
+N = 5, arr[] [6 8 0 1 3]
+Output:
+8 -1 1 3 -1
+Explanation:
+In the array, the next larger element to
+6 is 8, for 8 there is no larger elements
+hence it is -1, for 0 it is 1 , for 1 it
+is 3 and then for 3 there is no larger
+element on right and hence -1.
+ * 
+ * @param inp
+ * @return
+ */
+
+
+public long[] nextGreaterElement(long[] inp,int n)
+{
+
+long[] out =new long[n];
+for(int i=0;i<n;i++)
+{
+	out[i]=-1;
+	for(int j=i+1;j<n;j++)
+	{	
+     if(inp[j]>inp[i])
+	 {
+		out[i]=inp[j];
+		break;
+	 }
+	}
+}
+return out;
+}
+//@Todo
+public void nextGreaterElementUsingStack(int[] inp,int n)
+{
+	int element,next;
+	Stack<Integer> s=new Stack<Integer>();
+	s.push(inp[0]);
+	for(int i=1;i<n;i++)
+	{
+	  next=inp[i];
+
+	  if(s.isEmpty()==false){
+		element=s.pop();
+		while(element<next){
+			//@Todo
+			
+		}
+
+	  }
+	}
+
+}
+
+
 
 
 /**
