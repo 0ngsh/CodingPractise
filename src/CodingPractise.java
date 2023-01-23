@@ -17,6 +17,62 @@ import java.util.stream.IntStream;
 import DataStructure.LinkedList;
 
 public class CodingPractise {
+
+/**
+ * Given two strings a and b. The task is to find if the string 'b' can be obtained by rotating another string 'a' by exactly 2 places.
+
+Example 1:
+
+Input:
+a = amazon
+b = azonam
+Output: 1
+Explanation: amazon can be rotated anti
+clockwise by two places, which will make
+it as azonam.
+
+Example 2:
+
+Input:
+a = geeksforgeeks
+b = geeksgeeksfor
+Output: 0
+Explanation: If we rotate geeksforgeeks by
+two place in any direction , we won't get
+geeksgeeksfor.
+ * 
+ */
+	public static boolean isRotated(String str1, String str2)
+    {
+       for(int i=0;i<str1.length();i++)
+	   {
+		String part1=str1.substring(0,1);
+		String part2=str1.substring(1);
+		str1=part2+part1;
+		if(str1.equals(part2))
+		return true;
+	   }
+
+	   for(int i=0;i<str1.length();i++)
+	   {
+		String part1=str1.substring(0,str1.length()-1);
+		String part2=str1.substring(str1.length()-1);
+		str1=part2+part1;
+		System.out.println(str1);
+		if(str1.equals(str2))
+		return true;
+	   }
+
+	   return false;
+    }
+    
+
+
+
+
+
+
+
 /**
  * 
 Permutations of a given string

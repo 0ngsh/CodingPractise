@@ -71,8 +71,9 @@ public class Main {
 // {
 //   System.out.println(item);
 // }
-  codePractise.permute("ABC","");
-
+  //codePractise.permute("ABC","");
+  
+  System.out.println(codePractise.isRotated("amazon", "azonam"));
 	}
 	
 	
