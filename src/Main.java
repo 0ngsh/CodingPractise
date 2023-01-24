@@ -72,9 +72,13 @@ public class Main {
 //   System.out.println(item);
 // }
   //codePractise.permute("ABC","");
+ 
+  //fsbcnuvqhffbsaqxwp
+//wpfsbcnuvqhffbsaqx
   
-  System.out.println(codePractise.isRotated("amazon", "azonam"));
-	}
+  System.out.println(codePractise.isRotated("fsbcnuvqhffbsaqxwp", "wpfsbcnuvqhffbsaqx"));
+
+}
 	
 	
 

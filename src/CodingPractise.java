@@ -44,35 +44,63 @@ geeksgeeksfor.
  */
 	public static boolean isRotated(String str1, String str2)
     {
-       for(int i=0;i<str1.length();i++)
+
+		 if(str1.length()!= str2.length())
+        {
+            return false;
+        }
+		if(str1.equals(str2))
+		{
+			return true;
+		}
+
+		 String temp1=str1;
+		int count=0;
+       for(int i=0;i<temp1.length()-1;i++)
 	   {
-		String part1=str1.substring(0,1);
-		String part2=str1.substring(1);
-		str1=part2+part1;
-		if(str1.equals(part2))
-		return true;
+		String clockPart1=temp1.substring(0,1);
+		String clockPart2=temp1.substring(1);
+		temp1=clockPart2+clockPart1;
+		count++;
+		System.out.println("Count:"+count);
+	    System.out.println(temp1);
+		if(temp1.equals(str2))
+		{
+			
+			return true;
+		}
+
+		// if(count>2)
+		// {
+		// 	return false;
+		// }
+		
+
+	
 	   }
 
-	   for(int i=0;i<str1.length();i++)
+	   count=0;
+	   System.out.println("Anti clock wise");
+	   for(int i=0;i<str1.length()-1;i++)
 	   {
-		String part1=str1.substring(0,str1.length()-1);
-		String part2=str1.substring(str1.length()-1);
-		str1=part2+part1;
+
+		String antiClockPart1=str1.substring(0,str1.length()-1);
+		String antiClockPart2=str1.substring(str1.length()-1);
+		str1=antiClockPart2+antiClockPart1;
+		count++;
+		System.out.println("AntiCount:"+count);
 		System.out.println(str1);
-		if(str1.equals(str2))
-		return true;
+	    if(str1.equals(str2))
+	     return true;
+		//  if(count>2)
+		// {
+		// 	return false;
+		// }
 	   }
 
 	   return false;
     }
     
-
-
-
-
-
-
-
 /**
  * 
 Permutations of a given string
