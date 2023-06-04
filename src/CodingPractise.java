@@ -18,6 +18,44 @@ import DataStructure.LinkedList;
 
 public class CodingPractise {
 
+
+	/**Given a positive integer N, the task is to find the Nth 
+	 * 
+	 * natural number after removing all the natural numbers containing digit 9.
+
+**/
+
+public int findNth(int N)
+
+
+{
+	
+	
+	int i = 1;
+	
+	int upperEnd = N;
+	
+	while(i <= upperEnd) {
+	
+	//below each digit i we are checking if it contains 9
+	
+	if((i+"").contains("9")) {
+	
+	upperEnd++; 
+}
+
+i++;
+
+}
+
+//System.out.println(upperEnd);
+
+
+
+
+	return upperEnd;
+}
+
 /**
  * Given two strings a and b. The task is to find if the string 'b' can be obtained by rotating another string 'a' by exactly 2 places.
 
